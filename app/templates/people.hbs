@@ -9,42 +9,14 @@
     <a href="deleted">Deleted</a>
   </li>
 </ul>
+{{input type="text" id="new-person" placeholder="Person's Name" 
+    value=newPerson action="createPerson"}}
+    
+<button class="add-person">Add Person</button>
 
 <ul class="people-list">
-  <li class="person">
-    <h3>Emmanuel</h3>
-    <p>
-      Birthday
-    </p>
-  </li>
-  
-  <li class="person">
-    <h3>John</h3>
-    <p>
-      Birthday
-    </p>
-  </li>
-  
-  <li class="person">
-    <h3>Bill</h3>
-    <p>
-      Birthday
-    </p>
-  </li>
-  
-  <li class="person">
-    <h3>Ryan</h3>
-    <p>
-      Birthday
-    </p>
-  </li>
-  
-  <li class="person">
-    <h3>Joey</h3>
-    <p>
-      Birthday
-    </p>
-  </li>
-  
+  {{#each person in model}}
+    {{person-info person=person}}
+  {{/each}}
   
 </ul>

@@ -1,0 +1,15 @@
+<li class={{if person.isDeleted 'deleted' }}>
+  {{#if isEditing}}
+    {{input type="text" id=person.id value=person.name action="saveEdit"  }}
+    
+    
+  {{else}}
+    <h3 {{action "editPerson" on="doubleClick"}}>{{person.name}}</h3>
+    <p>
+      {{person.date_of_birth}}
+    </p>
+    <button class="delete">Delete</button>
+    
+  {{/if}}
+
+</li>
