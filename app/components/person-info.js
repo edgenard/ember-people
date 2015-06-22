@@ -13,7 +13,12 @@ export default Ember.Component.extend({
     },
     
     deletePerson: function (person) {
+
+
       this.sendAction("deletePerson", person);
+
+
+
     }
   },
 });

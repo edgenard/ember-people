@@ -1,6 +1,6 @@
 <ul class ="filters">
   <li class="filter">
-    <a href="all">All</a>
+    <a href="/">All</a>
   </li>
   <li class="filter">
     <a href="active">Active</a>
@@ -15,11 +15,5 @@
 {{input type="date" id="newDOB" value=newPersonDOB }}
 <button type="submit" >Add Person</button>
 </form>
-    
 
-<ul class="people-list">
-  {{#each person in model}}
-    {{person-info saveEdit="saveEdit" deletePerson="deletePerson" person=person}}
-  {{/each}}
-  
-</ul>
+{{outlet}}  

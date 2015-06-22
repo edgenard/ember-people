@@ -7,24 +7,36 @@ export default Ember.Route.extend({
   actions: {
     createPerson: function () {
       var newName = $("#newName").val();
-      var newDOB = $("#newDOB").val()
+      var newDOB = $("#newDOB").val();
       var person = this.store.createRecord("person", {
         name: newName ,
         date_of_birth: newDOB, 
       });
       
 
-      person.save();
+      person.save().then(function (success) {
+        console.log("sucess is", success);
+      }, function (error) {
+        console.log("error is", error);
+      });
     },
     
     saveEdit: function (person) {
-      person.save();
+      person.save().then(function (success) {
+        console.log("sucess is", success);
+      }, function (error) {
+        console.log("error is", error);
+      });
 
     },
     
     deletePerson: function (person) {
-      person.set("isDeleted", true);
       person.deleteRecord();
+      person.save().then(function (success) {
+        console.log("sucess is", success);
+      }, function (error) {
+        console.log("error is", error);
+      });
     }
   }
 });
