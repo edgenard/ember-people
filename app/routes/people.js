@@ -5,14 +5,26 @@ export default Ember.Route.extend({
     return this.store.find("person");
   },
   actions: {
-    createPerson: function (newPerson) {
+    createPerson: function () {
+      var newName = $("#newName").val();
+      var newDOB = $("#newDOB").val()
       var person = this.store.createRecord("person", {
-        name: newPerson,
+        name: newName ,
+        date_of_birth: newDOB, 
       });
       
-      this.controllerFor("people").set("newPerson", "");
-      
+
       person.save();
+    },
+    
+    saveEdit: function (person) {
+      person.save();
+
+    },
+    
+    deletePerson: function (person) {
+      person.set("isDeleted", true);
+      person.deleteRecord();
     }
   }
 });

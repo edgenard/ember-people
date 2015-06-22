@@ -9,14 +9,17 @@
     <a href="deleted">Deleted</a>
   </li>
 </ul>
-{{input type="text" id="new-person" placeholder="Person's Name" 
-    value=newPerson action="createPerson"}}
+<form {{action "createPerson" on="submit"}}>
+{{input type="text" id="newName" placeholder="Person's Name" 
+    value=newPersonName }}
+{{input type="date" id="newDOB" value=newPersonDOB }}
+<button type="submit" >Add Person</button>
+</form>
     
-<button class="add-person">Add Person</button>
 
 <ul class="people-list">
   {{#each person in model}}
-    {{person-info person=person}}
+    {{person-info saveEdit="saveEdit" deletePerson="deletePerson" person=person}}
   {{/each}}
   
 </ul>
