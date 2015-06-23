@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function () {
-    var deleted_people =  $.getJSON("https://rails-people-api.herokuapp.com/deleted_people" );
+    var deleted_people =  $.getJSON("https://rails-people-api.herokuapp.com/people/deleted_people" );
     var parsePeople = function (data) {
       return data.people;
     };
