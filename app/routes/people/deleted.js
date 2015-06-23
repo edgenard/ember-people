@@ -2,11 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function () {
-    console.log("Model Called");
-    return this.store.filter("person", function (person) {
-      console.log(person);
-      return person.get("isDeleted");
-    });
+    var deleted_people =  $.getJSON("http://localhost:3000/people/deleted_people" );
+    var parsePeople = function (data) {
+      return data.people;
+    };
+    return deleted_people.then(parsePeople);
   },
   
   renderTemplate: function (controller, model) {

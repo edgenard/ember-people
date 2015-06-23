@@ -14,29 +14,17 @@ export default Ember.Route.extend({
       });
       
 
-      person.save().then(function (success) {
-        console.log("sucess is", success);
-      }, function (error) {
-        console.log("error is", error);
-      });
+      person.save();
     },
     
     saveEdit: function (person) {
-      person.save().then(function (success) {
-        console.log("sucess is", success);
-      }, function (error) {
-        console.log("error is", error);
-      });
+      person.save();
 
     },
     
     deletePerson: function (person) {
       person.deleteRecord();
-      person.save().then(function (success) {
-        console.log("sucess is", success);
-      }, function (error) {
-        console.log("error is", error);
-      });
+      person.save();
     }
   }
 });

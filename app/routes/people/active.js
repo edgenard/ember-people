@@ -2,9 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function () {
-    return this.store.filter("person", function (person) {
-      return !person.get("isDeleted");
-    });
+    var  active =  $.getJSON("http://localhost:3000/people/active" );
+    var parsePeople = function (data) {
+      return data.people;
+    };
+    return active.then(parsePeople);
   },
   
   renderTemplate: function (controller, model) {
