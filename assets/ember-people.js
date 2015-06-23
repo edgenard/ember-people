@@ -223,7 +223,7 @@ define('ember-people/routes/people/active', ['exports', 'ember'], function (expo
 
   exports['default'] = Ember['default'].Route.extend({
     model: function model() {
-      var active = $.getJSON("https://rails-people-api.herokuapp.com/active");
+      var active = $.getJSON("https://rails-people-api.herokuapp.com/people/active");
       var parsePeople = function parsePeople(data) {
         return data.people;
       };
@@ -244,7 +244,7 @@ define('ember-people/routes/people/deleted', ['exports', 'ember'], function (exp
 
   exports['default'] = Ember['default'].Route.extend({
     model: function model() {
-      var deleted_people = $.getJSON('https://rails-people-api.herokuapp.com/deleted_people');
+      var deleted_people = $.getJSON('https://rails-people-api.herokuapp.com/people/deleted_people');
       var parsePeople = function parsePeople(data) {
         return data.people;
       };
@@ -687,7 +687,7 @@ define('ember-people/templates/people', ['exports'], function (exports) {
         var el3 = dom.createTextNode("\n    ");
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("a");
-        dom.setAttribute(el3,"href","/");
+        dom.setAttribute(el3,"href","#/");
         var el4 = dom.createTextNode("All");
         dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
@@ -701,7 +701,7 @@ define('ember-people/templates/people', ['exports'], function (exports) {
         var el3 = dom.createTextNode("\n    ");
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("a");
-        dom.setAttribute(el3,"href","active");
+        dom.setAttribute(el3,"href","#/active");
         var el4 = dom.createTextNode("Active");
         dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
@@ -715,7 +715,7 @@ define('ember-people/templates/people', ['exports'], function (exports) {
         var el3 = dom.createTextNode("\n    ");
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("a");
-        dom.setAttribute(el3,"href","deleted");
+        dom.setAttribute(el3,"href","#/deleted");
         var el4 = dom.createTextNode("Deleted");
         dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
@@ -1321,7 +1321,7 @@ catch(err) {
 if (runningTests) {
   require("ember-people/tests/test-helper");
 } else {
-  require("ember-people/app")["default"].create({"name":"ember-people","version":"0.0.0.9d9c1d68"});
+  require("ember-people/app")["default"].create({"name":"ember-people","version":"0.0.0.45ef9070"});
 }
 
 /* jshint ignore:end */
