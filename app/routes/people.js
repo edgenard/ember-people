@@ -5,7 +5,7 @@ export default Ember.Route.extend({
     return this.store.find("person");
   },
   
-  url: "http://localhost:3000/people/",
+  url: "https://rails-people-api.herokuapp.com/",
   
   actions: {
     createPerson: function () {

@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function () {
-    var  active =  $.getJSON("http://localhost:3000/people/active" );
+    var  active =  $.getJSON("https://rails-people-api.herokuapp.com/active" );
     var parsePeople = function (data) {
       return data.people;
     };
