@@ -7,7 +7,7 @@ define('ember-people/adapters/application', ['exports', 'ember-data'], function 
   'use strict';
 
   exports['default'] = DS['default'].RESTAdapter.extend({
-    host: "http://localhost:3000",
+    host: "https://rails-people-api.herokuapp.com/",
     ajax: function ajax(url, method, hash) {
       hash = hash || {};
       hash.crossDomain = true;
@@ -166,7 +166,7 @@ define('ember-people/routes/people', ['exports', 'ember'], function (exports, Em
       return this.store.find("person");
     },
 
-    url: "http://localhost:3000/people/",
+    url: "https://rails-people-api.herokuapp.com/",
 
     actions: {
       createPerson: function createPerson() {
@@ -219,7 +219,7 @@ define('ember-people/routes/people/active', ['exports', 'ember'], function (expo
 
   exports['default'] = Ember['default'].Route.extend({
     model: function model() {
-      var active = $.getJSON("http://localhost:3000/people/active");
+      var active = $.getJSON("https://rails-people-api.herokuapp.com/active");
       var parsePeople = function parsePeople(data) {
         return data.people;
       };
@@ -240,7 +240,7 @@ define('ember-people/routes/people/deleted', ['exports', 'ember'], function (exp
 
   exports['default'] = Ember['default'].Route.extend({
     model: function model() {
-      var deleted_people = $.getJSON('http://localhost:3000/people/deleted_people');
+      var deleted_people = $.getJSON('https://rails-people-api.herokuapp.com/deleted_people');
       var parsePeople = function parsePeople(data) {
         return data.people;
       };
@@ -1317,7 +1317,7 @@ catch(err) {
 if (runningTests) {
   require("ember-people/tests/test-helper");
 } else {
-  require("ember-people/app")["default"].create({"name":"ember-people","version":"0.0.0.faa581b8"});
+  require("ember-people/app")["default"].create({"name":"ember-people","version":"0.0.0.22516e60"});
 }
 
 /* jshint ignore:end */
