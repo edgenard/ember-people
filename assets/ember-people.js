@@ -7,7 +7,7 @@ define('ember-people/adapters/application', ['exports', 'ember-data'], function 
   'use strict';
 
   exports['default'] = DS['default'].RESTAdapter.extend({
-    host: "https://rails-people-api.herokuapp.com/",
+    host: "https://rails-people-api.herokuapp.com",
     ajax: function ajax(url, method, hash) {
       hash = hash || {};
       hash.crossDomain = true;
@@ -1317,7 +1317,7 @@ catch(err) {
 if (runningTests) {
   require("ember-people/tests/test-helper");
 } else {
-  require("ember-people/app")["default"].create({"name":"ember-people","version":"0.0.0.22516e60"});
+  require("ember-people/app")["default"].create({"name":"ember-people","version":"0.0.0.42d0a7f4"});
 }
 
 /* jshint ignore:end */
