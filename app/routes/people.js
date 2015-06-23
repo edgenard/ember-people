@@ -23,6 +23,7 @@ export default Ember.Route.extend({
     
     saveEdit: function (person) {
       var oldPerson = this.store.getById("person", person.id);
+      console.log(oldPerson);
       oldPerson.set("name", person.name);
       oldPerson.set("date_of_birth", person.date_of_birth);
       oldPerson.save();
