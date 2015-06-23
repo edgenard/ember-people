@@ -4,6 +4,9 @@ export default Ember.Route.extend({
   model: function () {
     return this.store.find("person");
   },
+  
+  url: "http://localhost:3000/people/",
+  
   actions: {
     createPerson: function () {
       var newName = $("#newName").val();
@@ -12,19 +15,39 @@ export default Ember.Route.extend({
         name: newName ,
         date_of_birth: newDOB, 
       });
-      
+      $("#newName").val("");
+      $("#newDOB").val("");
 
       person.save();
     },
     
     saveEdit: function (person) {
-      person.save();
+      var oldPerson = this.store.getById("person", person.id);
+      oldPerson.set("name", person.name);
+      oldPerson.set("date_of_birth", person.date_of_birth);
+      oldPerson.save();
 
     },
     
     deletePerson: function (person) {
-      person.deleteRecord();
-      person.save();
-    }
+      var url = this.url + person.id;
+      var $delete = $.ajax({
+        type: "DELETE",
+        url: url
+      });
+      $delete.then(function () {
+        person.set("deleted", true);
+      });
+    },
+    
+    restorePerson: function (person) {
+      var url = this.url + person.id + "/restore";
+      var $post = $.post(url);
+      $post.then(function (data) {
+        var restoredPerson = data.people[0];
+        var deletedPerson = this.store.getById("person", restoredPerson.id);
+        deletedPerson.set("deleted", false);
+      }.bind(this));
+    },
   }
 });

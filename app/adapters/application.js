@@ -5,7 +5,6 @@ export default DS.RESTAdapter.extend({
   ajax: function(url, method, hash) {
      hash = hash || {};
     hash.crossDomain = true;
-    console.log("url is", url);
     return this._super(url, method, hash);
   }
   

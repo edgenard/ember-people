@@ -1,0 +1,12 @@
+.deleted {
+  color: grey;
+
+}
+
+.dob{
+  display: none;
+}
+
+.show {
+  display: block;
+}
