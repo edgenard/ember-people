@@ -186,11 +186,15 @@ define('ember-people/routes/people', ['exports', 'ember'], function (exports, Em
         console.log(oldPerson);
         oldPerson.set("name", person.name);
         oldPerson.set("date_of_birth", person.date_of_birth);
-        oldPerson.save();
+        oldPerson.save().then(function (person) {
+          console.log(perosn);
+        }, function (error) {
+          console.log(error);
+        });
       },
 
       deletePerson: function deletePerson(person) {
-        var url = this.url + person.id;
+        var url = this.url + "/people/" + person.id;
         var $delete = $.ajax({
           type: "DELETE",
           url: url
@@ -201,7 +205,7 @@ define('ember-people/routes/people', ['exports', 'ember'], function (exports, Em
       },
 
       restorePerson: function restorePerson(person) {
-        var url = this.url + person.id + "/restore";
+        var url = this.url + "/people/" + person.id + "/restore";
         var $post = $.post(url);
         $post.then((function (data) {
           var restoredPerson = data.people[0];
@@ -1088,7 +1092,7 @@ define('ember-people/tests/routes/people.jshint', function () {
 
   module('JSHint - routes');
   test('routes/people.js should pass jshint', function() { 
-    ok(false, 'routes/people.js should pass jshint.\nroutes/people.js: line 12, col 21, \'$\' is not defined.\nroutes/people.js: line 13, col 20, \'$\' is not defined.\nroutes/people.js: line 18, col 7, \'$\' is not defined.\nroutes/people.js: line 19, col 7, \'$\' is not defined.\nroutes/people.js: line 35, col 21, \'$\' is not defined.\nroutes/people.js: line 46, col 19, \'$\' is not defined.\n\n6 errors'); 
+    ok(false, 'routes/people.js should pass jshint.\nroutes/people.js: line 12, col 21, \'$\' is not defined.\nroutes/people.js: line 13, col 20, \'$\' is not defined.\nroutes/people.js: line 18, col 7, \'$\' is not defined.\nroutes/people.js: line 19, col 7, \'$\' is not defined.\nroutes/people.js: line 30, col 21, \'perosn\' is not defined.\nroutes/people.js: line 39, col 21, \'$\' is not defined.\nroutes/people.js: line 50, col 19, \'$\' is not defined.\nroutes/people.js: line 29, col 39, \'person\' is defined but never used.\n\n8 errors'); 
   });
 
 });
@@ -1317,7 +1321,7 @@ catch(err) {
 if (runningTests) {
   require("ember-people/tests/test-helper");
 } else {
-  require("ember-people/app")["default"].create({"name":"ember-people","version":"0.0.0.8286cf53"});
+  require("ember-people/app")["default"].create({"name":"ember-people","version":"0.0.0.9d9c1d68"});
 }
 
 /* jshint ignore:end */
