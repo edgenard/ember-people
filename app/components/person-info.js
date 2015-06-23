@@ -9,7 +9,8 @@ export default Ember.Component.extend({
     saveEdit: function () {
       this.set("isEditing", false);
       var person = this.get("person");
-
+      console.log("component");
+      console.log(person);
       this.sendAction("saveEdit", person);
     },
     
