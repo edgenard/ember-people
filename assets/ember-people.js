@@ -50,7 +50,8 @@ define('ember-people/components/person-info', ['exports', 'ember'], function (ex
       saveEdit: function saveEdit() {
         this.set("isEditing", false);
         var person = this.get("person");
-
+        console.log("component");
+        console.log(person);
         this.sendAction("saveEdit", person);
       },
 
@@ -1007,7 +1008,7 @@ define('ember-people/tests/components/person-info.jshint', function () {
 
   module('JSHint - components');
   test('components/person-info.js should pass jshint', function() { 
-    ok(false, 'components/person-info.js should pass jshint.\ncomponents/person-info.js: line 21, col 7, \'$\' is not defined.\n\n1 error'); 
+    ok(false, 'components/person-info.js should pass jshint.\ncomponents/person-info.js: line 22, col 7, \'$\' is not defined.\n\n1 error'); 
   });
 
 });
@@ -1323,7 +1324,7 @@ catch(err) {
 if (runningTests) {
   require("ember-people/tests/test-helper");
 } else {
-  require("ember-people/app")["default"].create({"name":"ember-people","version":"0.0.0.c729c1d4"});
+  require("ember-people/app")["default"].create({"name":"ember-people","version":"0.0.0.e97e346d"});
 }
 
 /* jshint ignore:end */
