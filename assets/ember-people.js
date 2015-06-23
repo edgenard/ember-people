@@ -412,18 +412,18 @@ define('ember-people/templates/components/person-info', ['exports'], function (e
           } else {
             fragment = this.build(dom);
           }
-          var element5 = dom.childAt(fragment, [1]);
-          var element6 = dom.childAt(element5, [1]);
-          var element7 = dom.childAt(element5, [3]);
-          var element8 = dom.childAt(element5, [5]);
-          var morph0 = dom.createMorphAt(element6,0,0);
-          var morph1 = dom.createMorphAt(element7,1,1);
-          var attrMorph0 = dom.createAttrMorph(element7, 'data-id');
-          element(env, element6, context, "action", ["showDOB", get(env, context, "person")], {"on": "click"});
+          var element4 = dom.childAt(fragment, [1]);
+          var element5 = dom.childAt(element4, [1]);
+          var element6 = dom.childAt(element4, [3]);
+          var element7 = dom.childAt(element4, [5]);
+          var morph0 = dom.createMorphAt(element5,0,0);
+          var morph1 = dom.createMorphAt(element6,1,1);
+          var attrMorph0 = dom.createAttrMorph(element6, 'data-id');
+          element(env, element5, context, "action", ["showDOB", get(env, context, "person")], {"on": "click"});
           content(env, morph0, context, "person.name");
-          attribute(env, attrMorph0, element7, "data-id", get(env, context, "person.id"));
+          attribute(env, attrMorph0, element6, "data-id", get(env, context, "person.id"));
           content(env, morph1, context, "person.date_of_birth");
-          element(env, element8, context, "action", ["restorePerson", get(env, context, "person")], {});
+          element(env, element7, context, "action", ["restorePerson", get(env, context, "person")], {});
           return fragment;
         }
       };
@@ -484,10 +484,10 @@ define('ember-people/templates/components/person-info', ['exports'], function (e
             } else {
               fragment = this.build(dom);
             }
-            var element4 = dom.childAt(fragment, [1]);
-            var morph0 = dom.createMorphAt(element4,1,1);
-            var morph1 = dom.createMorphAt(element4,3,3);
-            element(env, element4, context, "action", ["saveEdit"], {"on": "submit"});
+            var element3 = dom.childAt(fragment, [1]);
+            var morph0 = dom.createMorphAt(element3,1,1);
+            var morph1 = dom.createMorphAt(element3,3,3);
+            element(env, element3, context, "action", ["saveEdit"], {"on": "submit"});
             inline(env, morph0, context, "input", [], {"type": "text", "id": "name", "value": get(env, context, "person.name")});
             inline(env, morph1, context, "input", [], {"type": "date", "id": "dob", "value": get(env, context, "person.date_of_birth")});
             return fragment;
@@ -522,11 +522,7 @@ define('ember-people/templates/components/person-info', ['exports'], function (e
             dom.appendChild(el0, el1);
             var el1 = dom.createTextNode("\n      ");
             dom.appendChild(el0, el1);
-            var el1 = dom.createElement("button");
-            dom.setAttribute(el1,"class","edit");
-            dom.setAttribute(el1,"name","button");
-            var el2 = dom.createTextNode("Edit");
-            dom.appendChild(el1, el2);
+            var el1 = dom.createComment(" <button class=\"edit\" {{action \"editPerson\"  person}} name=\"button\">Edit</button> ");
             dom.appendChild(el0, el1);
             var el1 = dom.createTextNode("\n      ");
             dom.appendChild(el0, el1);
@@ -561,8 +557,7 @@ define('ember-people/templates/components/person-info', ['exports'], function (e
             }
             var element0 = dom.childAt(fragment, [1]);
             var element1 = dom.childAt(fragment, [3]);
-            var element2 = dom.childAt(fragment, [5]);
-            var element3 = dom.childAt(fragment, [7]);
+            var element2 = dom.childAt(fragment, [7]);
             var morph0 = dom.createMorphAt(element0,0,0);
             var morph1 = dom.createMorphAt(element1,1,1);
             var attrMorph0 = dom.createAttrMorph(element1, 'data-id');
@@ -570,8 +565,7 @@ define('ember-people/templates/components/person-info', ['exports'], function (e
             content(env, morph0, context, "person.name");
             attribute(env, attrMorph0, element1, "data-id", get(env, context, "person.id"));
             content(env, morph1, context, "person.date_of_birth");
-            element(env, element2, context, "action", ["editPerson", get(env, context, "person")], {});
-            element(env, element3, context, "action", ["deletePerson", get(env, context, "person")], {});
+            element(env, element2, context, "action", ["deletePerson", get(env, context, "person")], {});
             return fragment;
           }
         };
@@ -1324,7 +1318,7 @@ catch(err) {
 if (runningTests) {
   require("ember-people/tests/test-helper");
 } else {
-  require("ember-people/app")["default"].create({"name":"ember-people","version":"0.0.0.e97e346d"});
+  require("ember-people/app")["default"].create({"name":"ember-people","version":"0.0.0.99b35716"});
 }
 
 /* jshint ignore:end */
