@@ -183,11 +183,13 @@ define('ember-people/routes/people', ['exports', 'ember'], function (exports, Em
 
       saveEdit: function saveEdit(person) {
         var oldPerson = this.store.getById("person", person.id);
-        console.log(oldPerson);
+
         oldPerson.set("name", person.name);
         oldPerson.set("date_of_birth", person.date_of_birth);
+        console.log(person);
+        console.log(oldPerson);
         oldPerson.save().then(function (person) {
-          console.log(perosn);
+          console.log(person);
         }, function (error) {
           console.log(error);
         });
@@ -1092,7 +1094,7 @@ define('ember-people/tests/routes/people.jshint', function () {
 
   module('JSHint - routes');
   test('routes/people.js should pass jshint', function() { 
-    ok(false, 'routes/people.js should pass jshint.\nroutes/people.js: line 12, col 21, \'$\' is not defined.\nroutes/people.js: line 13, col 20, \'$\' is not defined.\nroutes/people.js: line 18, col 7, \'$\' is not defined.\nroutes/people.js: line 19, col 7, \'$\' is not defined.\nroutes/people.js: line 30, col 21, \'perosn\' is not defined.\nroutes/people.js: line 39, col 21, \'$\' is not defined.\nroutes/people.js: line 50, col 19, \'$\' is not defined.\nroutes/people.js: line 29, col 39, \'person\' is defined but never used.\n\n8 errors'); 
+    ok(false, 'routes/people.js should pass jshint.\nroutes/people.js: line 12, col 21, \'$\' is not defined.\nroutes/people.js: line 13, col 20, \'$\' is not defined.\nroutes/people.js: line 18, col 7, \'$\' is not defined.\nroutes/people.js: line 19, col 7, \'$\' is not defined.\nroutes/people.js: line 41, col 21, \'$\' is not defined.\nroutes/people.js: line 52, col 19, \'$\' is not defined.\n\n6 errors'); 
   });
 
 });
@@ -1321,7 +1323,7 @@ catch(err) {
 if (runningTests) {
   require("ember-people/tests/test-helper");
 } else {
-  require("ember-people/app")["default"].create({"name":"ember-people","version":"0.0.0.45ef9070"});
+  require("ember-people/app")["default"].create({"name":"ember-people","version":"0.0.0.c729c1d4"});
 }
 
 /* jshint ignore:end */
