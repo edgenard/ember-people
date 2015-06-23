@@ -26,12 +26,16 @@ export default Ember.Route.extend({
       console.log(oldPerson);
       oldPerson.set("name", person.name);
       oldPerson.set("date_of_birth", person.date_of_birth);
-      oldPerson.save();
+      oldPerson.save().then(function (person) {
+        console.log(perosn);
+      }, function (error) {
+        console.log(error);
+      });
 
     },
     
     deletePerson: function (person) {
-      var url = this.url + person.id;
+      var url = this.url +"/people/"+ person.id;
       var $delete = $.ajax({
         type: "DELETE",
         url: url
@@ -42,7 +46,7 @@ export default Ember.Route.extend({
     },
     
     restorePerson: function (person) {
-      var url = this.url + person.id + "/restore";
+      var url = this.url +"/people/" + person.id + "/restore";
       var $post = $.post(url);
       $post.then(function (data) {
         var restoredPerson = data.people[0];
